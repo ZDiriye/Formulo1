@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Races</title>
+  <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../static/css/teams.css">
+</head>
+<body>
+  <div class="page">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <a href="/" class="custom-link"><h1>Formulo 1</h1></a>
+      </div>
+      <div class="sidebar-body">
+        <ul class="navigation-list">
+          <p>Statistics</p>
+          <li id="nav-races" class="navigation-list-item">
+            <a href="/races" class="navigation-link">
+              <div class="row">
+                <div class="col-3">
+                  <i class="fa-solid fa-flag-checkered"></i>
+                </div>
+                <div class="col-7">
+                  Races
+                </div>
+              </div>
+            </a>
+          </li>
+          <li id="nav-drivers" class="navigation-list-item">
+            <a href = "/drivers" class="navigation-link">
+              <div class="row">
+                <div class="col-3">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="col-7">
+                  Drivers
+                </div>
+              </div>
+            </a>
+          </li>
+          <li id="nav-teams" class="navigation-list-item">
+            <a href = "/teams" class="navigation-link">
+              <div class="row">
+                <div class="col-3">
+                  <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="col-7">
+                  Teams
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div class="navigation-bar-container">
+        <div class="navigation-bar" id="sidebarBar">
+          <button id="sidebarToggle" class="btn sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button> 
+        </div>        
+      </div>
+      <div class="driver">
+        <h1 class="header">Current Season's Teams</h1>
+      </div>
+      <div class="driver-container">
+        <div class="row">
+          {% for entry in constructor_standings %}
+            {% with team_image = team_images|selectattr('TeamName', 'equalto', entry['Name'])|first %}
+              <div class="col-3">
+                <figure class="driver-card">
+                  <a href="/teams/{{ entry['ConstructorID'] }}">
+                    {% if team_image %}
+                      <img src="{{ team_image['ImagePath'] }}" class="driver-image">
+                    {% endif %}
+                    <figcaption>
+                      <h4>{{ entry['Name'] }}</h4>
+                    </figcaption>
+                  </a>
+                </figure>
+              </div>
+            {% endwith %}
+          {% endfor %} 
+        </div>
+      </div> 
+      <div class="footer">
+        <p>&copy; 2023 Zakariye's Project</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // get the current page URL
+    const currentPagePath = window.location.pathname;
+
+    // get the navigation item elements
+    const racesNavItem = document.getElementById("nav-races");
+    const driversNavItem = document.getElementById("nav-drivers");
+    const teamsNavItem = document.getElementById("nav-teams");
+
+    // check if the current page matches each navigation item and add the "active" class
+    if (currentPagePath.startsWith("/races")) {
+      racesNavItem.classList.add("active");
+    } else if (currentPagePath.startsWith("/drivers")) {
+      driversNavItem.classList.add("active");
+    } else if (currentPagePath.startsWith("/teams")) {
+      teamsNavItem.classList.add("active");
+    }
+  </script>
+  <script src="../static/js/sidebar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

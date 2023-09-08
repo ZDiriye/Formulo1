@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Completed Race Details</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/completed_race_details.css">
+  </head>
+  <body>
+    <div class="page">
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <a href="/" class="custom-link"><h1>Formulo 1</h1></a>
+        </div>
+        <div class="sidebar-body">
+          <ul class="navigation-list">
+            <p>Statistics</p>
+            <li id="nav-races" class="navigation-list-item">
+              <a href="/races" class="navigation-link">
+                <div class="row">
+                  <div class="col-3">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                  </div>
+                  <div class="col-7">
+                    Races
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li id="nav-drivers" class="navigation-list-item">
+              <a href = "/drivers" class="navigation-link">
+                <div class="row">
+                  <div class="col-3">
+                    <i class="fa-solid fa-users"></i>
+                  </div>
+                  <div class="col-7">
+                    Drivers
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li id="nav-teams" class="navigation-list-item">
+              <a href = "/teams" class="navigation-link">
+                <div class="row">
+                  <div class="col-3">
+                    <i class="fas fa-hands-helping"></i>
+                  </div>
+                  <div class="col-7">
+                    Teams
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <div class="navigation-bar-container">
+          <div class="navigation-bar" id="sidebarBar">
+            <button id="sidebarToggle" class="btn sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-countdown-container">
+              <div class="countdown-wrapper">
+                <p>{{ next_race.RaceName }}: <span id="countdown2"></span></p>
+              </div>
+            </div>  
+          </div>        
+        </div>
+        <div class="race-card">
+          <div class="race-info">
+            <div class="race-name-flag">
+              <h1 class="race-name">{{ race_name }}</h1>
+              {% for entry in country_images %}
+                {% if entry.RaceName == race_name %}
+                  <img src="{{ entry.ImagePath }}" class="race-flag">
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>        
+        <div class="fastest-lap">
+          <div class="title-container">
+            <i class="fa-light fa-stopwatch fa-2x"></i>
+            <h1 class="font">DHL Fastest Lap Award</h1>
+          </div>
+          <div class="driver-info-container">
+              <img src="{{ drivers_image_info.ImagePath }}" alt="{{ drivers_image_info.DriverName }} Image" class="driver-image">
+              <div class="driver-details">
+                  <h3 class="fastest-lap-driver">{{ fastest_lap_data.Driver }}</h3>
+                  <h3 class="fastest-lap-time">{{ fastest_lap_data.FastestLap }}</h3>
+              </div>
+          </div>
+        </div>
+        <div class="standings-container">
+          <div class="driver-standings">
+            <h2 class="font">Driver Standings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>POS</th>
+                        <th>NO</th>
+                        <th>DRIVER</th>
+                        <th>CAR</th>
+                        <th>LAPS</th>
+                        <th>TIME/RETIRED</th>
+                        <th>PTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in race_details_table %}
+                    <tr>
+                        <td>{{ entry['Position'] }}</td>
+                        <td>{{ entry['Number'] }}</td>
+                        <td>{{ entry['DriverName'] }}</td>
+                        <td>{{ entry['Car'] }}</td>
+                        <td>{{ entry['Laps'] }}</td>
+                        <td>{{ entry['Time'] }}</td>
+                        <td>{{ entry['Points'] }}</td>
+                    </tr>
+                    {% endfor %}
+                 </tbody>
+             </table>
+          </div>
+        </div>
+        <div class="footer">
+          <p>&copy; 2023 Zakariye's Project</p>
+        </div> 
+      </div>
+    </div>
+    <script>
+      var datetimeString = "{{ next_race.Datetime }}";
+  
+      var countDownDate = new Date(datetimeString).getTime();
+  
+      var x = setInterval(function() {
+        var now = new Date().getTime();
+  
+        var timeleft = countDownDate - now;
+  
+        // Time calculations for days, hours, minutes, and seconds
+        var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+  
+        document.getElementById("countdown2").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        if (timeleft < 0) {
+          clearInterval(x);
+          document.getElementById("countdown2").innerHTML = "";
+        }
+      }, 1000);
+    </script>
+    <script>
+      // get the current page URL
+      const currentPagePath = window.location.pathname;
+  
+      // get the navigation item elements
+      const racesNavItem = document.getElementById("nav-races");
+      const driversNavItem = document.getElementById("nav-drivers");
+      const teamsNavItem = document.getElementById("nav-teams");
+  
+      // check if the current page matches each navigation item and add the "active" class
+      if (currentPagePath.startsWith("/races")) {
+        racesNavItem.classList.add("active");
+      } else if (currentPagePath.startsWith("/drivers")) {
+        driversNavItem.classList.add("active");
+      } else if (currentPagePath.startsWith("/teams")) {
+        teamsNavItem.classList.add("active");
+      }
+    </script>
+    <script src="../static/js/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+import unittest
+from database_engine.engine import TestDatabaseEngine
+from fastest_lap.fastest_lap_from_api import TestFastestLapFromApi
+from fastest_lap.parse_fastest_lap import TestParseFastestLap
+from race_details.race_details_from_api import TestRaceDetailsFromApi
+from race_details.parse_race_details import TestParseRaceDetails
+from race_drivers.current_form_from_api import TestCurrentFormFromApi
+from race_schedule.race_schedule_from_api import TestRaceScheduleFromApi
+from race_schedule.parse_race_schedule import TestParseRaceSchedule
+from race_standings.constructor_standings_from_api import TestConstructorStandingsFromApi
+from race_standings.driver_standings_from_api import TestDriverStandingsFromApi
+from race_standings.parse_constructor_standings import TestParseConstructorStandings
+from race_standings.parse_driver_standings import TestParseDriverStandings
+
+if __name__ == '__main__':
+    unittest.main()

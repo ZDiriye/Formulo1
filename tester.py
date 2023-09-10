@@ -16,4 +16,4 @@ def get_race_details_from_api(constructor_id):
 
 
 if __name__ == "__main__":
-    pprint.pprint(get_race_details_from_api())
+    pprint.pprint(get_race_details_from_api("mclaren"))

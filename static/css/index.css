@@ -180,7 +180,7 @@ body.active .page .content {
   border-radius: 0.625rem;
   background-color: #fff;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  height: 37.5rem;
+  height: 37rem;
   overflow: auto;
   min-width: 31.25rem;
 }
@@ -225,13 +225,22 @@ a h1 {
   color: white;
 }
 
+.page.active .footer {
+  width: 100%;
+  left: 0;
+}
+
 .page .footer {
   background-color: #f8f9fa;
   padding: 0.3125rem;
   text-align: center;
   position: relative;
-  bottom: 0;
-  transition: all 0.4s;
+  height: 2rem;
+  font-family: 'Oswald';
+}
+
+.page .footer p {
+  letter-spacing: 0.05rem; 
 }
 
 .team-image {

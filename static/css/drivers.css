@@ -141,7 +141,7 @@ a {
 
 .driver-card {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .driver-image {
@@ -201,33 +201,22 @@ a h1{
 
 .page .footer {
   background-color: #f8f9fa;
-  padding: 5px;
+  padding: 0.3125rem;
   text-align: center;
   position: relative;
-  bottom: 0;
-  transition: all 0.4s;
+  height: 2rem;
+  font-family: 'Oswald';
+}
+
+.page .footer p {
+  letter-spacing: 0.05rem; 
 }
 
 .driver-card figcaption {
   margin-top: 10px;
   font-size: 15px;
   color: #625f5f; 
-  font-family: 'Playfair Display', serif;
-}
-  
-.countdown-wrapper {
-  position: absolute;
-  right: 1rem; 
-  background-color: #4CAF50;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  text-align: right; 
-  margin-top: -1.2rem;
-}
-
-.countdown-wrapper p {
-  margin: 0;
-  color: white;
+  font-family: 'Oswald';
 }
 
 .col-7{

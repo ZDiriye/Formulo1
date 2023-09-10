@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 def get_database_engine():
     return db.create_engine(
-        'sqlite:////Users/zakariyediriye/SEOProject/FORMULA1.db')
+        'sqlite:////Users/zakariyediriye/Formulo1/FORMULA1.db')
 
 
 class TestDatabaseEngine(unittest.TestCase):

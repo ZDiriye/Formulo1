@@ -65,22 +65,19 @@
           </button> 
         </div>        
       </div>
-      <div class="driver">
+      <div class="teams">
         <h1 class="header">Current Season's Teams</h1>
       </div>
-      <div class="driver-container">
+      <div class="teams-container">
         <div class="row">
           {% for entry in constructor_standings %}
             {% with team_image = team_images|selectattr('TeamName', 'equalto', entry['Name'])|first %}
-              <div class="col-3">
-                <figure class="driver-card">
+              <div class="col-4">
+                <figure class="team-card">
                   <a href="/teams/{{ entry['ConstructorID'] }}">
                     {% if team_image %}
-                      <img src="{{ team_image['ImagePath'] }}" class="driver-image">
+                      <img src="{{ team_image['ImagePath'] }}" class="team-image">
                     {% endif %}
-                    <figcaption>
-                      <h4>{{ entry['Name'] }}</h4>
-                    </figcaption>
                   </a>
                 </figure>
               </div>

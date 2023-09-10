@@ -236,7 +236,6 @@ a.custom-link {
 
 .title-container h1 {
   margin-bottom: 0; 
-
 }
 
 .driver-info-container {
@@ -290,21 +289,26 @@ a h1{
 
 .page .footer {
   background-color: #f8f9fa;
-  padding: 5px;
+  padding: 0.3125rem;
   text-align: center;
   position: relative;
-  bottom: 0;
-  transition: all 0.4s;
+  height: 2rem;
+  font-family: 'Oswald';
+}
+
+.page .footer p {
+  letter-spacing: 0.05rem; 
 }
 
 .countdown-wrapper {
   position: absolute;
-  right: 1rem; 
+  right: 1rem;
   background-color: #4CAF50;
   padding: 0.5rem;
   border-radius: 1rem;
-  text-align: right; 
-  margin-top: -1.2rem;
+  text-align: right;
+  margin-top: -1.3rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .countdown-wrapper p {

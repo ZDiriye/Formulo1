@@ -135,30 +135,30 @@ text-decoration: none;
 color: #333;
 }
 
-.driver-container {
+.teams-container {
 padding: 20px;
 }
 
-.driver-card {
-    text-align: center;
-    margin-bottom: 10px; /* Adjust this value to control the gap between images */
-  }
+.team-card-card {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
   
 
-.driver-image {
-    width: 60%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-    background-color: white;
-  }  
+.team-image {
+  width: 100%;
+  height: 12.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  background-color: white;
+}  
 
-.driver-image:hover {
+.team-image:hover {
 transform: scale(1.05);
 }
 
-.driver-card figcaption {
+.team-card-card figcaption {
 margin-top: 10px;
 font-size: 14px;
 color: #666; 
@@ -170,7 +170,7 @@ color: #666;
 }
 }
 
-.driver{
+.teams{
 flex: 1;
 background-color: #fff;
 border-radius: 1rem;
@@ -195,20 +195,24 @@ color: white;
 }
 
 .page.active .footer {
-width: 100%;
-left: 0;
+  width: 100%;
+  left: 0;
 }
 
 .page .footer {
-background-color: #f8f9fa;
-padding: 5px;
-text-align: center;
-position: relative;
-bottom: 0;
-transition: all 0.4s;
+  background-color: #f8f9fa;
+  padding: 0.3125rem;
+  text-align: center;
+  position: relative;
+  height: 2rem;
+  font-family: 'Oswald';
 }
 
-.driver-card figcaption {
+.page .footer p {
+  letter-spacing: 0.05rem; 
+}
+
+.teams-card figcaption {
 margin-top: 10px;
 font-size: 15px;
 color: #625f5f; 

@@ -9,5 +9,5 @@ def get_drivers_images_from_database():
     
     with engine.connect() as connection:
         query = 'SELECT * FROM DRIVER_IMAGES'
-        driver_images = pd.read_sql(query, connection)
-    return driver_images
+        driver_side_images = pd.read_sql(query, connection)
+    return driver_side_images

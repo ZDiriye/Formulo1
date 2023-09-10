@@ -14,7 +14,7 @@ from check_update_current_race_form import check_update_current_form
 from race_drivers.current_form_from_database import get_current_form_from_database
 from race_drivers.driver_image_by_id import get_driver_image_by_id
 from race_drivers.driver_image_by_name import get_driver_image_by_name
-from race_teams.team_images_from_database import get_team_images_from_database
+from race_teams.team_images import get_team_images_from_database
 from race_drivers.pie_chart import create_pie_chart
 from race_schedule.next_race_data_from_database import get_next_race_data_from_database
 from race_drivers.drivers_championship_position import get_drivers_championship_position
@@ -22,6 +22,7 @@ from race_drivers.line_and_bar_graph import create_line_and_bar_graph
 from race_schedule.race_from_database import get_race_from_database
 from race_schedule.round_from_race_schedule import get_round_from_race_schedule
 from race_schedule.check_is_race_completed import is_race_completed
+from race_teams.official_team_images import get_official_team_images_from_database
 
 
 app = Flask(__name__)
@@ -29,7 +30,7 @@ app = Flask(__name__)
 @app.route("/update_server", methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('./SEOProject')
+        repo = git.Repo('./Formulo1')
         origin = repo.remotes.origin
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
@@ -188,7 +189,7 @@ def teams():
         check_update_standings_and_schedule()
 
         constructor_standings_data = get_constructor_standings_from_database()
-        team_images = get_team_images_from_database()
+        team_images = get_official_team_images_from_database()
 
         constructor_standings = constructor_standings_data.to_dict(orient="records")
         team_images = team_images.to_dict(orient="records")

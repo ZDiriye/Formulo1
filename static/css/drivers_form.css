@@ -138,15 +138,6 @@ body.active .page .content {
   margin-top: 2rem;
 }
 
-.standings {
-  flex: 1;
-  padding: 1.25rem;
-  margin: 1.25rem;
-  border-radius: 1rem;
-  background-color: #fff;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-}
-
 .standings table {
   width: 100%;
 }
@@ -176,14 +167,7 @@ thead {
   font-family: 'Oswald';
 }
 
-.driver-info-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.driver-details-container {
+.driver-details-container, .championship-position {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -201,26 +185,15 @@ thead {
   max-width: 100%;
 }
 
-.driver-card {
+.driver-card, .standings{
   flex: 1;
   background-color: #fff;
   border-radius: 1rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.25rem rgba(23, 20, 20, 0.1);
   padding: 1rem;
   margin: 1rem;
   position: relative;
   height: auto;
-}
-
-.driver-images {
-  display: flex;
-  align-items: center;
-}
-
-.image-with-position {
-  display: flex;
-  align-items: center;
-  gap: 4rem; 
 }
 
 .driver-image {
@@ -229,7 +202,10 @@ thead {
   height: auto;
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
+}
+
+.font{
+  font-family: 'Oswald';
 }
 
 .header {
@@ -248,42 +224,50 @@ a {
 
 .driver-info-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  gap: 5rem;
+  justify-content: center;
   position: relative;
 }
 
-.championship-position {
-  text-align: center;
+.driver-info-container h1{
+  font-weight: bold;
+  font-size: 5rem;
+  color: #4169E1;
   font-family: 'Oswald';
 }
 
-.icon-date {
+.title-container {
   display: flex;
-  align-items: center;
-  gap: 0.3125rem;
-  margin-bottom: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 25px;
+  position: relative;
+  border-bottom: 3px solid darkred; 
+  padding-bottom: 10px; 
 }
 
-.icon-date i {
-  font-size: 1.8rem;
-  color: #ffc107;
+.title-container h1 {
+  margin-bottom: 0; 
 }
 
-.centered-position {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2.5rem;
+.fa-clock {
+  color: silver;
 }
 
-.centered-position h1{
-  color: darkmagenta;
-  font-weight: bold;
-  font-size: 4.5rem;
+.fa-regular.fa-trophy{
+  color: #FFD700;
 }
+
 a h1 {
   color: white;
+}
+
+.page.active .footer {
+  width: 100%;
+  left: 0;
 }
 
 .page .footer {
@@ -291,19 +275,25 @@ a h1 {
   padding: 0.3125rem;
   text-align: center;
   position: relative;
-  bottom: 0;
-  transition: all 0.4s;
+  height: 2rem;
+  font-family: 'Oswald';
+}
+
+.page .footer p {
+  letter-spacing: 0.05rem; 
 }
 
 .countdown-wrapper {
   position: absolute;
-  right: 1rem; 
+  right: 1rem;
   background-color: #4CAF50;
   padding: 0.5rem;
   border-radius: 1rem;
-  text-align: right; 
-  margin-top: -1.2rem;
+  text-align: right;
+  margin-top: -1.3rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 
 .countdown-wrapper p {
   margin: 0;

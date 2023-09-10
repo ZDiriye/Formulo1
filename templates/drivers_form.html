@@ -71,38 +71,33 @@
           </div>        
         </div>
         <div class="driver-card">
-          <h1 class="header"> {{ drivers_image_info.DriverName }}: Track Record</h1>
+          <h1 class="header"> {{ drivers_image_info.DriverName }}</h1>
         </div>
-        <div class="driver-details-container">
+        <div class="championship-position">
+          <div class="title-container">
+            <h1 class="font"><span class="fa-regular fa-trophy"></span> Championship Position</h1>
+          </div>
           <div class="driver-info-container">
-            <div class="driver-images">
-              <div class="image-with-position">
-                <img src="{{ drivers_image_info.ImagePath }}" alt="{{ drivers_image_info.DriverName }} Image" class="driver-image">
-                <div class="championship-position">
-                  <div class="icon-date">
-                    <i class="fa-regular fa-trophy"></i> <h2>Championship Position:</h2>
-                  </div>
-                  <div class="centered-position">
-                    <h1>P{{ championship_position_data.Position }}</h1>
-                  </div>
-                </div>
-              </div>
-            </div>            
-            <div class="driver-details">
-              <div class="plotly-graph-container">
-                {{ combined_graph_html | safe }}
-              </div>
-            
-              <div class="plotly-graph-container">
-                {{ fig_pie_html | safe }}
-              </div>
-            
+            <img src="{{ drivers_image_info.ImagePath }}" class="driver-image">
+            <h1>P{{ championship_position_data.Position }}</h1>
+          </div>
+        </div>
+        <div class="driver-details-container">   
+          <div class="title-container">
+            <h1 class="font"><span class="fas fa-clock"></span> Track Record</h1>
+          </div>         
+          <div class="driver-details">
+            <div class="plotly-graph-container">
+              {{ combined_graph_html | safe }}
             </div>
-          </div>          
+            <div class="plotly-graph-container">
+              {{ fig_pie_html | safe }}
+            </div>
+          </div>       
         </div>        
         <div class="standings-container">
           <div class="standings">
-            <h2 class="font">Season Details</Details></h2>
+            <h2 class="font">Season Performance</Details></h2>
             <table>
                 <thead>
                     <tr>

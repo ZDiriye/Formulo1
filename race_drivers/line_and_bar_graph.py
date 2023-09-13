@@ -3,20 +3,21 @@ import plotly.graph_objects as go
 from database_engine.engine import get_database_engine
 
 def create_line_and_bar_graph(driver_id):
-    query = f"SELECT Round, Points FROM CURRENT_FORM WHERE DriverID = '{driver_id}'"
     engine = get_database_engine()
-    conn = engine.connect()
-    df = pd.read_sql_query(query, conn)
-    conn.close()
+    
+    with engine.connect() as connection:
+        query = f"SELECT Round, Points FROM CURRENT_FORM WHERE DriverID = '{driver_id}' AND Date = (SELECT MAX(Date) FROM CURRENT_FORM WHERE DriverID  = '{driver_id}')"
+        df = pd.read_sql_query(query, connection)
 
-    # Remove duplicate rounds and keep the last occurrence
+
+    # remove duplicate rounds and keep the last occurrence
     df = df.drop_duplicates(subset='Round', keep='last')
 
     df['TotalPoints'] = df['Points'].cumsum()
 
     fig = go.Figure()
 
-    # Add bar graph for points per round with custom hover text
+    # add bar graph for points per round with custom hover text
     fig.add_trace(
         go.Bar(
             x=df['Round'],
@@ -25,7 +26,7 @@ def create_line_and_bar_graph(driver_id):
             hovertemplate='Round Points: %{y}<br>Round: %{x}<extra></extra>',
         ))
 
-    # Add line graph for cumulative total points
+    # add line graph for cumulative total points
     fig.add_trace(
         go.Scatter(
             x=df['Round'],

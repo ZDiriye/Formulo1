@@ -132,9 +132,10 @@ body.active .page .content {
 
 .standings-container {
   display: flex;
-  width: 100%;
-  overflow: auto;
+  justify-content: center;
+  align-items: center;
 }
+
 .driver-standings {
   flex: 1;
   padding: 1.25rem;
@@ -144,15 +145,24 @@ body.active .page .content {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
-.driver-standings table{
-  width: 100%; 
+.driver-standings table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
 }
 
 th,
 td {
   border-bottom: 1px solid #ddd;
-  font-size: 12px;
-  padding: 14px 20px;
+  font-size: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  text-align: left;
 }
 
 tr:nth-child(even) {
@@ -168,6 +178,7 @@ thead {
   background-color: #000;
   color: #fff;
 }
+
 
 .font{
   font-family: 'Oswald';
@@ -186,6 +197,8 @@ a.custom-link {
   margin: 1rem;
   position: relative;
   height: auto;
+  align-items: center;
+  justify-content: center; 
 }
 
 .race-info {
@@ -212,15 +225,22 @@ a.custom-link {
   margin-left: 0.5rem;
 }
 
-.fastest-lap {
-  display: flex;
-  flex-direction: column; 
+.fastest-lap{
+  display: 1;
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   padding: 2rem; 
   margin: 2rem;
-  max-width: 100%;
+  width: 28rem;
+  height: 28rem;
+}
+
+.top-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .title-container {
@@ -243,7 +263,6 @@ a.custom-link {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  max-width: 100%;
   overflow: hidden;
 }
 
@@ -259,7 +278,6 @@ a.custom-link {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  max-width: 100%;
   overflow: hidden;
 }
 
@@ -318,4 +336,22 @@ a h1{
 
 .col-7{
   margin-left: 0.6rem;
+}
+
+.fa-fire{
+  color: red;
+}
+
+.fa-trophy{
+  color: gold;
+}
+
+@media (max-width: 576px) {
+  .driver-standings table {
+    font-size: 0.375rem; /* Adjust the font size as needed */
+  }
+
+  th, td {
+    padding: 0.25rem 0.375rem; /* Adjust the padding as needed */
+  }
 }

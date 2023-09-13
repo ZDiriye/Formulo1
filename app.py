@@ -1,7 +1,9 @@
 import git
 from flask import Flask, render_template, request
-from check_update_race_standings_and_schedule import check_update_standings_and_schedule
+from check_update_race_standings import check_update_standings
+from check_update_for_new_season import check_update_new_season
 from check_update_race_details import check_update_details
+from race_drivers.winner_from_database import get_winner_from_database
 from race_standings.driver_standings_from_database import get_driver_standings_from_database
 from race_standings.constructor_standings_from_database import get_constructor_standings_from_database
 from fastest_lap.fastest_lap_from_database import get_fastest_lap_from_database
@@ -40,7 +42,8 @@ def webhook():
 
 @app.route("/")
 def home():
-        check_update_standings_and_schedule()
+        check_update_new_season()
+        check_update_standings()
 
         drivers_standings_data = get_driver_standings_from_database()
         constructors_standings_data = get_constructor_standings_from_database()
@@ -69,7 +72,8 @@ def home():
 
 @app.route("/races")
 def races():
-        check_update_standings_and_schedule()
+        check_update_new_season()
+        check_update_standings()
 
         schedule_data = get_race_schedule_from_database()
         race_images = get_race_images_from_database()
@@ -85,28 +89,39 @@ def races():
 
 @app.route('/races/<race_name>')
 def race_details(race_name):
-        round_num = get_round_from_race_schedule(race_name)
-        next_race_info = get_next_race_data_from_database()
+        round_num = get_round_from_race_schedule(race_name)#
+        next_race_info = get_next_race_data_from_database()#
 
         # have to check if the first round is completed because the
         # api will return none if the round is not completed
-        if is_race_completed(round_num):
+        if is_race_completed(round_num):#
             check_update_details(race_name, round_num)
 
-            race_details_data = get_race_details_from_database(race_name) #just pass the name
+            winner_name_data = get_winner_from_database(race_name)
+            winner_name_data = {
+            "DriverName": winner_name_data["DriverName"][0]
+            }
+            winner_driver_name = winner_name_data['DriverName']
 
+            winner_drivers_image = get_driver_image_by_name(winner_driver_name)
+            winner_drivers_image_info = {
+                "ImagePath": winner_drivers_image["ImagePath"][0],
+            }
+            
             fastest_lap_data = get_fastest_lap_from_database(race_name)
             fastest_lap_data_info = {
                 "Driver": fastest_lap_data["Driver"][0],
                 "FastestLap": fastest_lap_data["FastestLap"][0],
             }
-            driver_name = fastest_lap_data_info['Driver']
+            fastest_driver_name = fastest_lap_data_info['Driver']
 
-            drivers_image = get_driver_image_by_name(driver_name)
-            drivers_image_info = {
-                "ImagePath": drivers_image["ImagePath"][0],
-                "DriverName": drivers_image["DriverName"][0],
+            fastest_drivers_image = get_driver_image_by_name(fastest_driver_name)
+            fastest_drivers_image_info = {
+                "ImagePath": fastest_drivers_image["ImagePath"][0],
             }
+
+            race_details_data = get_race_details_from_database(race_name) 
+
             country_images_data = get_country_images_from_database()
             
             country_images = country_images_data.to_dict(
@@ -119,9 +134,11 @@ def race_details(race_name):
                 race_details_table=race_details_table,
                 fastest_lap_data=fastest_lap_data_info,
                 race_name=race_name,
-                drivers_image_info=drivers_image_info,
+                fastest_drivers_image_info=fastest_drivers_image_info,
                 country_images=country_images,
-                next_race=next_race_info
+                next_race=next_race_info,
+                winner_name_data=winner_name_data,
+                winner_drivers_image_info=winner_drivers_image_info
                 )
         else:
             race_data = get_race_from_database(round_num)
@@ -138,7 +155,8 @@ def race_details(race_name):
 
 @app.route("/drivers")
 def drivers():
-        check_update_standings_and_schedule()
+        check_update_new_season()
+        check_update_standings()
 
         drivers_standings_data = get_driver_standings_from_database()
         driver_images = get_drivers_images_from_database()
@@ -186,7 +204,8 @@ def drivers_form(driver_id):
 
 @app.route("/teams")
 def teams():
-        check_update_standings_and_schedule()
+        check_update_new_season()
+        check_update_standings()
 
         constructor_standings_data = get_constructor_standings_from_database()
         team_images = get_official_team_images_from_database()

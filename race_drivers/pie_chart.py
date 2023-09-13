@@ -4,13 +4,12 @@ from database_engine.engine import get_database_engine
 
 
 def create_pie_chart(driver_id):
-    query = f"SELECT Position, COUNT(*) as PositionCount FROM CURRENT_FORM WHERE DriverID = '{driver_id}' GROUP BY Position"
-
     engine = get_database_engine()
-    conn = engine.connect()
-
-    df = pd.read_sql_query(query, conn)
-    conn.close()
+    
+    with engine.connect() as connection:
+        query = f"SELECT Position, COUNT(*) as PositionCount FROM CURRENT_FORM WHERE DriverID = '{driver_id}' AND Date = (SELECT MAX(Date) FROM CURRENT_FORM WHERE DriverID = '{driver_id}') GROUP BY Position"
+        df = pd.read_sql_query(query, connection)
+  
 
     # filter out positions with zero counts and sort by position
     df = df[df["PositionCount"] > 0]

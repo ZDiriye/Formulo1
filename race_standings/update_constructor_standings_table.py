@@ -12,4 +12,4 @@ def update_the_standings_of_constructors():
     df = parse_constructor_standings_data(current_standings_data)
     with engine.connect() as connection:
         df.to_sql('CONSTRUCTORSTANDINGS', con=connection,
-                  if_exists='append', index=False)
+                  if_exists='replace', index=False)

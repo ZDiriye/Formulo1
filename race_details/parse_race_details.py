@@ -9,7 +9,7 @@ from unittest.mock import patch
 def parse_race_details_data(race_data):
     standings_list = []
 
-    current_year = datetime.datetime.now().year
+    year = datetime.datetime.now().year
 
     race_name = race_data['raceName']
 
@@ -38,7 +38,7 @@ def parse_race_details_data(race_data):
              laps,
              time,
              points,
-             current_year))
+             year))
 
     df = pd.DataFrame(
         standings_list,
@@ -51,7 +51,7 @@ def parse_race_details_data(race_data):
             'Laps',
             'Time',
             'Points',
-            'CurrentYear'])
+            'Year'])
 
     return df
 
@@ -96,7 +96,7 @@ class TestParseRaceDetails(unittest.TestCase):
                 'Laps',
                 'Time',
                 'Points',
-                'CurrentYear'])
+                'Year'])
 
         # assert the function's return value matches the expected data
         pd.testing.assert_frame_equal(result, expected_df)

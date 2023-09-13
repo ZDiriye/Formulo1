@@ -9,7 +9,7 @@ import datetime
 def parse_fastest_lap_data(race_data):
     fastest_lap_list = []
 
-    current_year = datetime.datetime.now().year
+    year = datetime.datetime.now().year
 
     race_name = race_data['raceName']
 
@@ -18,10 +18,10 @@ def parse_fastest_lap_data(race_data):
             ' ' + driver_data['Driver']['familyName']
         fastest_lap = driver_data['FastestLap']['Time']['time']
         fastest_lap_list.append(
-            (race_name, driver_name, fastest_lap, current_year))
+            (race_name, driver_name, fastest_lap, year))
 
     df = pd.DataFrame(fastest_lap_list, columns=[
-                      'RaceName', 'Driver', 'FastestLap', 'CurrentYear'])
+                      'RaceName', 'Driver', 'FastestLap', 'Year'])
 
     return df
 
@@ -58,7 +58,7 @@ class TestParseFastestLap(unittest.TestCase):
                 'RaceName',
                 'Driver',
                 'FastestLap',
-                'CurrentYear'])
+                'Year'])
 
         # assert the function's return value matches the expected data
         pd.testing.assert_frame_equal(result, expected_df)

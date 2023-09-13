@@ -169,7 +169,6 @@ body.active .page .content {
 .standings-container {
   display: flex;
   flex-wrap: wrap;
-  height: auto;
 }
 
 .driver-standings,

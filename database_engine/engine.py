@@ -13,7 +13,7 @@ def get_database_engine():
 class TestDatabaseEngine(unittest.TestCase):
     @patch('sqlalchemy.create_engine')
     def test_engine(self, mock_create_engine):
-        expected_db_url = 'sqlite:////Users/zakariyediriye/SEOProject/FORMULA1.db'
+        expected_db_url = 'sqlite:////Users/zakariyediriye/Formulo1/FORMULA1.db'
 
         # set up the mock return value for create_engine
         mock_create_engine.return_value = "Mocked Engine"

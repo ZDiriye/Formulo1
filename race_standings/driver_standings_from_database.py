@@ -8,6 +8,6 @@ def get_driver_standings_from_database():
     engine = get_database_engine()
     
     with engine.connect() as connection:
-        sql_query = "SELECT * FROM DRIVERSTANDINGS WHERE Date = (SELECT MAX(Date) FROM DRIVERSTANDINGS);"
+        sql_query = "SELECT * FROM DRIVERSTANDINGS"
         standings_data = pd.read_sql(sql_query, connection)
     return standings_data

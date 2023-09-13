@@ -8,7 +8,7 @@ import datetime
 def get_next_race_date():
     engine = get_database_engine()
     with engine.connect() as connection:
-        sql_query = "SELECT MIN(ComparisonDate) FROM RACE_SCHEDULE WHERE ComparisonDate >= :current_date"
+        sql_query = "SELECT MIN(Date) FROM RACE_SCHEDULE WHERE Date >= :current_date"
         result = connection.execute(
             db.text(sql_query), {
                 "current_date": datetime.date.today()}).fetchone()

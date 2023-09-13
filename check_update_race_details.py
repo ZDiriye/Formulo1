@@ -10,7 +10,7 @@ import datetime
 def check_update_details(race_name, round_num):
     engine = get_database_engine()
     with engine.connect() as connection:
-        sql_query = "SELECT CurrentYear FROM RACE_DETAILS WHERE RaceName = :race_name"
+        sql_query = "SELECT Year FROM RACE_DETAILS WHERE RaceName = :race_name"
         existing_race_year = connection.execute(
             db.text(sql_query), {"race_name": race_name}).fetchone()
 

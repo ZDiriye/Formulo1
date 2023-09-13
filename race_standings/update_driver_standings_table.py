@@ -12,4 +12,4 @@ def update_the_standings_of_drivers():
     df = parse_driver_standings_data(current_standings_data)
     with engine.connect() as connection:
         df.to_sql('DRIVERSTANDINGS', con=connection,
-                  if_exists='append', index=False)
+                  if_exists='replace', index=False)

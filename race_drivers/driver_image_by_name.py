@@ -10,4 +10,8 @@ def get_driver_image_by_name(driver_name):
     with engine.connect() as connection:
         query = f"SELECT * FROM DRIVER_IMAGES WHERE DriverName = '{driver_name}'"
         driver_image = pd.read_sql(query, connection)
-    return driver_image
+
+    drivers_image_info = {
+                "ImagePath": driver_image["ImagePath"][0],
+            }
+    return drivers_image_info

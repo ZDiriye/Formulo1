@@ -11,4 +11,10 @@ def get_race_from_database(round_num):
     with engine.connect() as connection:
         query = f"SELECT * FROM RACE_SCHEDULE WHERE Round = '{round_num}'"
         race_data = pd.read_sql(query, connection)
-    return race_data
+
+    race_data_info = {
+                "RaceName": race_data["RaceName"][0],
+                "Datetime": race_data["DisplayDate"][0] + " " + race_data["Time"][0],
+            }
+    
+    return race_data_info

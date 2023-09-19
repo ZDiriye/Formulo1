@@ -10,51 +10,71 @@
     <link rel="stylesheet" href="../static/css/completed_race_details.css">
   </head>
   <body>
+    <header>
+      <div class="navbar-brand-container">
+          <a href="/" class="navbar-brand">Formulo 1</a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+            <li>
+                <a  id="nav-races" href="/races" class="nav-links">Races</a>
+            </li>
+            <li>
+                <a id="nav-drivers" href="/drivers" class="nav-links">Drivers</a>
+            </li>
+            <li>
+                <a id="nav-teams" href="/teams" class="nav-links">Teams</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
     <div class="page">
       <div class="sidebar">
         <div class="sidebar-header">
           <a href="/" class="custom-link"><h1>Formulo 1</h1></a>
         </div>
         <div class="sidebar-body">
-          <ul class="navigation-list">
-            <p>Statistics</p>
-            <li id="nav-races" class="navigation-list-item">
-              <a href="/races" class="navigation-link">
-                <div class="row">
-                  <div class="col-3">
-                    <i class="fa-solid fa-flag-checkered"></i>
+          <nav>
+            <ul class="navigation-list">
+              <p>Statistics</p>
+              <li id="nav-races" class="navigation-list-item">
+                <a href="/races" class="navigation-link">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fa-solid fa-flag-checkered"></i>
+                    </div>
+                    <div class="col-7">
+                      Races
+                    </div>
                   </div>
-                  <div class="col-7">
-                    Races
+                </a>
+              </li>
+              <li id="nav-drivers" class="navigation-list-item">
+                <a href = "/drivers" class="navigation-link">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="col-7">
+                      Drivers
+                    </div>
                   </div>
-                </div>
-              </a>
-            </li>
-            <li id="nav-drivers" class="navigation-list-item">
-              <a href = "/drivers" class="navigation-link">
-                <div class="row">
-                  <div class="col-3">
-                    <i class="fa-solid fa-users"></i>
+                </a>
+              </li>
+              <li id="nav-teams" class="navigation-list-item">
+                <a href = "/teams" class="navigation-link">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="col-7">
+                      Teams
+                    </div>
                   </div>
-                  <div class="col-7">
-                    Drivers
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li id="nav-teams" class="navigation-list-item">
-              <a href = "/teams" class="navigation-link">
-                <div class="row">
-                  <div class="col-3">
-                    <i class="fas fa-hands-helping"></i>
-                  </div>
-                  <div class="col-7">
-                    Teams
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
       <div class="content">
@@ -65,7 +85,7 @@
             </button>
             <div class="nav-countdown-container">
               <div class="countdown-wrapper">
-                <p>{{ next_race.RaceName }}: <span id="countdown2"></span></p>
+                <p>{{ next_race_dict.RaceName }}: <span id="countdown2"></span></p>
               </div>
             </div>  
           </div>        
@@ -74,7 +94,7 @@
           <div class="race-info">
             <div class="race-name-flag">
               <h1 class="race-name">{{ race_name }}</h1>
-              {% for entry in country_images %}
+              {% for entry in country_images_dict %}
                 {% if entry.RaceName == race_name %}
                   <img src="{{ entry.ImagePath }}" class="race-flag">
                 {% endif %}
@@ -88,9 +108,9 @@
               <h1 class="font"><span class="fas fa-trophy"></span> Race Winner</h1>
             </div>
             <div class="driver-info-container">
-                <img src="{{ winner_drivers_image_info.ImagePath }}" class="driver-image">
+                <img src="{{ winner_drivers_image_dict.ImagePath }}" class="driver-image">
                 <div class="driver-details">
-                    <h3 class="fastest-lap-driver">{{ winner_name_data.DriverName }}</h3>
+                    <h3 class="fastest-lap-driver">{{ winner_driver_name }}</h3>
                 </div>
             </div>
           </div>        
@@ -99,16 +119,16 @@
               <h1 class="font"><span class="fas fa-fire"></span> DHL Fastest Lap Award</h1>
             </div>
             <div class="driver-info-container">
-                <img src="{{ fastest_drivers_image_info.ImagePath }}" class="driver-image">
+                <img src="{{ fastest_drivers_image_dict.ImagePath }}" class="driver-image">
                 <div class="driver-details">
-                    <h3 class="fastest-lap-driver">{{ fastest_lap_data.Driver }}</h3>
-                    <h3 class="fastest-lap-time">{{ fastest_lap_data.FastestLap }}</h3>
+                    <h3 class="fastest-lap-driver">{{ fastest_lap_data_dict.Driver }}</h3>
+                    <h3 class="fastest-lap-time">{{ fastest_lap_data_dict.FastestLap }}</h3>
                 </div>
             </div>
           </div>
         </div>
         <div class="standings-container">
-          <div class="driver-standings">
+          <div class="standings">
             <h2 class="font">Driver Standings</h2>
               <table>
               <thead>
@@ -123,7 +143,7 @@
                   </tr>
               </thead>
               <tbody>
-                  {% for entry in race_details_table %}
+                  {% for entry in race_details_data_dict %}
                   <tr>
                       <td>{{ entry['Position'] }}</td>
                       <td>{{ entry['Number'] }}</td>
@@ -144,7 +164,7 @@
       </div>
     </div>
     <script>
-      var datetimeString = "{{ next_race.Datetime }}";
+      var datetimeString = "{{ next_race_dict.Datetime }}";
   
       var countDownDate = new Date(datetimeString).getTime();
   

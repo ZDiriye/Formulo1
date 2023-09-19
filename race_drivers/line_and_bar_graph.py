@@ -6,7 +6,7 @@ def create_line_and_bar_graph(driver_id):
     engine = get_database_engine()
     
     with engine.connect() as connection:
-        query = f"SELECT Round, Points FROM CURRENT_FORM WHERE DriverID = '{driver_id}' AND Date = (SELECT MAX(Date) FROM CURRENT_FORM WHERE DriverID  = '{driver_id}')"
+        query = f"SELECT Round, Points FROM DRIVER_FORM WHERE DriverID = '{driver_id}' AND Date = (SELECT MAX(Date) FROM DRIVER_FORM WHERE DriverID  = '{driver_id}')"
         df = pd.read_sql_query(query, connection)
 
 

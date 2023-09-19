@@ -10,4 +10,8 @@ def get_fastest_lap_from_database(race_name):
         query = f"SELECT * FROM FASTEST_LAP WHERE RaceName = '{race_name}' AND Year = (SELECT MAX(Year) FROM FASTEST_LAP WHERE RaceName = '{race_name}')"
         fastest_lap_data = pd.read_sql(query, connection)
     
-    return fastest_lap_data
+    fastest_lap_data_info = {
+                "Driver": fastest_lap_data["Driver"][0],
+                "FastestLap": fastest_lap_data["FastestLap"][0],
+            }
+    return fastest_lap_data_info

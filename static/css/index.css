@@ -1,3 +1,56 @@
+.navbar-brand {
+  font-weight: bold;
+  color: #fff; 
+  text-decoration: none;
+  font-family: 'Oswaldo';
+  font-size: 1.5rem; 
+}
+
+.navbar-brand-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.navbar-brand-container a:hover {
+  color: white;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 5%; 
+  background: #333333;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 2rem; 
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #b0b0b0;
+  font-weight: 400;
+  transition: color 0.2s ease 0s;
+  padding: 0.25rem 0.25rem; 
+  font-size: 0.8rem;
+}
+
+.nav-links a:hover {
+  color: #fff; 
+}
+
+.nav-links a.active {
+  color: #fff; 
+}
+
 body {
   background: #f5f5f5;
   margin: 0;
@@ -62,12 +115,9 @@ body.active .page .content {
 
 .navigation-list-item:hover {
   background-color: #d25e0f;
-  box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
-}
-
-.navigation-list-item.active {
-  background-color: #d25e0f;
-  box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
 }
 
 .navigation-link {
@@ -168,42 +218,50 @@ body.active .page .content {
 
 .standings-container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; 
 }
 
-.driver-standings,
-.constructor-standings {
+.standings {
   flex: 1;
-  padding: 0.625rem;
-  margin: 0.625rem;
-  border-radius: 0.625rem;
+  padding: 1.25rem;
+  margin: 1.25rem;
+  border-radius: 1rem;
   background-color: #fff;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  height: 37rem;
-  overflow: auto;
-  min-width: 31.25rem;
 }
 
-.driver-standings table,
-.constructor-standings table {
-  width: 100%;
-  max-width: 100%;
+.standings-container-inner {
+  flex: 1;
+  max-height: 30rem; /* Adjust the height as needed */
+  overflow: auto;
+}
+
+.standings table {
+  width: 100%; 
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 th,
 td {
-  border-bottom: 0.0625rem solid #ddd;
+  border-bottom: 1px solid #ddd;
   font-size: 0.75rem;
-  padding: 0.875rem;
+  padding: 0.625rem 1.25rem;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-th {
+table td{
+  text-align: center;
+}
+
+table th {
   color: #908e8e;
   font-weight: 100;
+  text-align: center;
 }
 
 thead {
@@ -239,7 +297,7 @@ a h1 {
 }
 
 .page .footer p {
-  letter-spacing: 0.05rem; 
+  letter-spacing: 0.05rem;
 }
 
 .team-image {
@@ -260,22 +318,40 @@ a h1 {
   margin-left: 0.5rem;
 }
 
-.col-7{
+.col-7 {
   margin-left: 0.6rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 577px) {
+  .navbar-brand,
+  .navbar-brand-container,
+  header,
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
   .page .sidebar {
-    display: none; 
+    display: none;
   }
 
   .page .content {
-    margin-left: 0; 
+    margin-left: 0;
     width: 100%;
   }
 
   .navigation-bar-container {
     display: none;
   }
-}
 
+  .standings-container {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  th, td {
+    padding: 0.5rem; 
+    font-size: 0.7rem; 
+  }
+}

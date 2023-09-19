@@ -7,7 +7,7 @@ def create_pie_chart(driver_id):
     engine = get_database_engine()
     
     with engine.connect() as connection:
-        query = f"SELECT Position, COUNT(*) as PositionCount FROM CURRENT_FORM WHERE DriverID = '{driver_id}' AND Date = (SELECT MAX(Date) FROM CURRENT_FORM WHERE DriverID = '{driver_id}') GROUP BY Position"
+        query = f"SELECT Position, COUNT(*) as PositionCount FROM DRIVER_FORM WHERE DriverID = '{driver_id}' AND Date = (SELECT MAX(Date) FROM DRIVER_FORM WHERE DriverID = '{driver_id}') GROUP BY Position"
         df = pd.read_sql_query(query, connection)
   
 

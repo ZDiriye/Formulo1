@@ -1,3 +1,56 @@
+.navbar-brand {
+  font-weight: bold;
+  color: #fff; 
+  text-decoration: none;
+  font-family: 'Oswaldo';
+  font-size: 1.5rem; 
+}
+
+.navbar-brand-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.navbar-brand-container a:hover {
+  color: white;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 5%; 
+  background: #333333;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 2rem; 
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #b0b0b0;
+  font-weight: 400;
+  transition: color 0.2s ease 0s;
+  padding: 0.25rem 0.25rem; 
+  font-size: 0.8rem;
+}
+
+.nav-links a:hover {
+  color: #fff; 
+}
+
+.nav-links a.active {
+  color: #fff; 
+}
+
 body {
   background: #f5f5f5;
   margin: 0;
@@ -62,12 +115,15 @@ body.active .page .content {
 
 .navigation-list-item:hover {
   background-color: #d25e0f;
-  box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
 }
 
 .navigation-list-item.active {
   background-color: #d25e0f;
+  color: #fff;
+  font-weight: bold;
   box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
 }
 
@@ -132,30 +188,45 @@ body.active .page .content {
 
 .standings-container {
   display: flex;
-  width: 100%;
-  overflow: auto;
-  flex-wrap: wrap;
-  margin-top: 2rem;
+  justify-content: center;
+  align-items: flex-start; 
+}
+
+.standings {
+  flex: 1;
+  padding: 1.25rem;
+  margin: 1.25rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  width: 90%;
 }
 
 .standings table {
-  width: 100%;
+  width: 100%; 
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 th,
 td {
   border-bottom: 1px solid #ddd;
   font-size: 0.75rem;
-  padding: 0.875rem 1.25rem;
+  padding: 0.625rem 1.25rem;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-th {
+table td{
+  text-align: center;
+}
+
+table th {
   color: #908e8e;
   font-weight: 100;
+  text-align: center;
 }
 
 thead {
@@ -293,7 +364,8 @@ a h1 {
 }
 
 .countdown-wrapper {
-  position: relative;
+  position: absolute;
+  right: 1rem;
   background-color: #4CAF50;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -309,4 +381,38 @@ a h1 {
 
 .col-7{
   margin-left: 0.6rem;
+}
+
+@media (min-width: 577px) {
+  .navbar-brand,
+  .navbar-brand-container,
+  header,
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .page .sidebar {
+    display: none;
+  }
+
+  .page .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .navigation-bar-container {
+    display: none;
+  }
+
+  .standings-container {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  th, td {
+    padding: 0.5rem; 
+    font-size: 0.7rem; 
+  }
 }

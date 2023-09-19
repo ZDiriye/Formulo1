@@ -4,7 +4,7 @@ import datetime
 # takes the relevant data from the dictionary and returns it in a data frame
 
 
-def parse_current_form_data(race_data_list, driver_id):
+def parse_driver_form_data(race_data_list, driver_id):
     standings_list = []
 
     current_year = datetime.datetime.now().year

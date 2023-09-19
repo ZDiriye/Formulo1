@@ -7,4 +7,8 @@ def get_drivers_championship_position(driver_id):
     with engine.connect() as connection:
         query = f"SELECT Position FROM DRIVERSTANDINGS WHERE DriverID = '{driver_id}'"
         position_data = pd.read_sql(query, connection)
-    return position_data
+
+    championship_position_data = {
+            "Position": position_data["Position"][0]
+        }
+    return championship_position_data

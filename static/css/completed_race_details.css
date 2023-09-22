@@ -4,23 +4,14 @@
   text-decoration: none;
   font-family: 'Oswaldo';
   font-size: 1.5rem; 
-}
-
-.navbar-brand-container {
-  display: flex;
-  align-items: center;
-  margin-right: auto;
-}
-
-.navbar-brand-container a:hover {
-  color: white;
+  margin-left: auto;
 }
 
 header {
   display: flex;
-  align-items: center;
   padding: 1rem 5%; 
   background: #333333;
+  justify-content: space-between;
 }
 
 .nav-links {
@@ -28,10 +19,7 @@ header {
   padding: 0;
   margin: 0;
   display: flex;
-}
-
-.nav-links li {
-  margin-right: 2rem; 
+  margin-top: 0.2rem;
 }
 
 .nav-links a {
@@ -41,14 +29,7 @@ header {
   transition: color 0.2s ease 0s;
   padding: 0.25rem 0.25rem; 
   font-size: 0.8rem;
-}
-
-.nav-links a:hover {
-  color: #fff; 
-}
-
-.nav-links a.active {
-  color: #fff; 
+  margin-right: 2rem;
 }
 
 body {
@@ -214,12 +195,12 @@ td {
   padding: 0.625rem 1.25rem;
 }
 
-td{
-  text-align: center;
-}
-
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+table td{
+  text-align: center;
 }
 
 table th {
@@ -399,7 +380,6 @@ a h1{
   color: gold;
 }
 
-
 @media (min-width: 577px) {
   .navbar-brand,
   .navbar-brand-container,
@@ -430,6 +410,6 @@ a h1{
 
   th, td {
     padding: 0.5rem; 
-    font-size: 0.7rem; 
+    font-size: 0.5rem; 
   }
 }

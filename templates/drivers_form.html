@@ -17,13 +17,13 @@
       <nav>
         <ul class="nav-links">
             <li>
-                <a  id="nav-races" href="/races" class="nav-links">Races</a>
+                <a class="navigation-list-item nav-races" href="/races">Races</a>
             </li>
             <li>
-                <a id="nav-drivers" href="/drivers" class="nav-links">Drivers</a>
+                <a class="navigation-list-item nav-drivers" href="/drivers">Drivers</a>
             </li>
             <li>
-                <a id="nav-teams" href="/teams" class="nav-links">Teams</a>
+                <a class="navigation-list-item nav-teams" href="/teams">Teams</a>
             </li>
         </ul>
       </nav>
@@ -37,7 +37,7 @@
           <nav>
             <ul class="navigation-list">
               <p>Statistics</p>
-              <li id="nav-races" class="navigation-list-item">
+              <li class="navigation-list-item nav-races">
                 <a href="/races" class="navigation-link">
                   <div class="row">
                     <div class="col-3">
@@ -49,7 +49,7 @@
                   </div>
                 </a>
               </li>
-              <li id="nav-drivers" class="navigation-list-item">
+              <li class="navigation-list-item nav-drivers">
                 <a href = "/drivers" class="navigation-link">
                   <div class="row">
                     <div class="col-3">
@@ -61,7 +61,7 @@
                   </div>
                 </a>
               </li>
-              <li id="nav-teams" class="navigation-list-item">
+              <li class="navigation-list-item nav-teams">
                 <a href = "/teams" class="navigation-link">
                   <div class="row">
                     <div class="col-3">
@@ -97,15 +97,17 @@
           <div class="title-container">
             <h1 class="font"><span class="fas fa-medal"></span> Championship Position</h1>
           </div>
-          <div class="driver-info-container">
+          <div class="team-info-container">
             <img src="{{ drivers_image_dict.ImagePath }}" class="driver-image">
-            <h1>P{{ championship_position_dict.Position }}</h1>
+            <div class="team-details">
+              <h1>P{{ championship_position_dict.Position }}</h1>
+            </div>
           </div>
         </div>
         <div class="driver-details-container">   
           <div class="title-container">
             <h1 class="font"><span class="fas fa-clock"></span> Track Record</h1>
-          </div>         
+          </div>        
           <div class="driver-details">
             <div class="plotly-graph-container">
               {{ combined_graph_html | safe }}
@@ -113,11 +115,11 @@
             <div class="plotly-graph-container">
               {{ fig_pie_html | safe }}
             </div>
-          </div>       
+          </div>
         </div> 
         <div class="standings-container">
           <div class="standings">
-            <h2 class="font">Season Performance</Details></h2>
+            <h2 class="font">Season Performance</h2>
             <table>
                 <thead>
                     <tr>
@@ -125,7 +127,7 @@
                         <th>RACE</th>
                         <th>TEAM</th>
                         <th>POSITION</th>
-                        <th>POINTS</th>
+                        <th>PTS</th>
                         <th>STATUS</th>
                         <th>WIN(S)</th>
                     </tr>
@@ -175,23 +177,27 @@
       }, 1000);
     </script>
     <script>
-      // get the current page URL
       const currentPagePath = window.location.pathname;
-  
-      // get the navigation item elements
-      const racesNavItem = document.getElementById("nav-races");
-      const driversNavItem = document.getElementById("nav-drivers");
-      const teamsNavItem = document.getElementById("nav-teams");
-  
+    
+      const racesNavItems = document.querySelectorAll(".nav-races");
+      const driversNavItems = document.querySelectorAll(".nav-drivers");
+      const teamsNavItems = document.querySelectorAll(".nav-teams");
+    
       // check if the current page matches each navigation item and add the "active" class
       if (currentPagePath.startsWith("/races")) {
-        racesNavItem.classList.add("active");
+        racesNavItems.forEach((item) => {
+          item.classList.add("active");
+        });
       } else if (currentPagePath.startsWith("/drivers")) {
-        driversNavItem.classList.add("active");
+        driversNavItems.forEach((item) => {
+          item.classList.add("active");
+        });
       } else if (currentPagePath.startsWith("/teams")) {
-        teamsNavItem.classList.add("active");
+        teamsNavItems.forEach((item) => {
+          item.classList.add("active");
+        });
       }
-    </script>
+    </script>  
     <script src="../static/js/sidebar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>

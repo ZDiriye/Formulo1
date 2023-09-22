@@ -1,11 +1,12 @@
 import pandas as pd
-
+import datetime
 
 # takes the relevant data from the dictionary and returns it in a data frame
 
 
 def parse_driver_lineup(driver_lineup_data, constructor_id):
     standings_list = []
+    current_date = datetime.date.today().strftime('%Y-%m-%d')
 
     for driver_data in driver_lineup_data:
 
@@ -15,6 +16,7 @@ def parse_driver_lineup(driver_lineup_data, constructor_id):
         standings_list.append(
             (constructor_id,
              driver_name,
+             current_date
              ))
 
     df = pd.DataFrame(
@@ -22,6 +24,7 @@ def parse_driver_lineup(driver_lineup_data, constructor_id):
         columns=[
             'ConstructorID',
             'DriverName',
+            'Date'
             ])
 
     return df

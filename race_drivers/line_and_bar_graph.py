@@ -41,7 +41,7 @@ def create_line_and_bar_graph(driver_id):
         xaxis_title='Round',
         yaxis_title='Points',
         legend=dict(x=0, y=1),
-        width=341,
+        width=320,
         height=425,
     )
 

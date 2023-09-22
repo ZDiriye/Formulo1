@@ -7,9 +7,9 @@
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../static/css/completed_race_details.css">
+    <link rel="stylesheet" href="../static/css/teams_form.css">
   </head>
-  <body>
+  <body> 
     <header>
       <div class="navbar-brand-container">
           <a href="/" class="navbar-brand">Formulo 1</a>
@@ -90,72 +90,60 @@
             </div>  
           </div>        
         </div>
-        <div class="race-card">
-          <div class="race-info">
-            <div class="race-name-flag">
-              <h1 class="race-name">{{ race_name }}</h1>
-              {% for entry in country_images_dict %}
-                {% if entry.RaceName == race_name %}
-                  <img src="{{ entry.ImagePath }}" class="race-flag">
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
+        <div class="team-card">
+          <h1 class="header"> {{ official_teams_image_dict.TeamName }}</h1>
         </div>
         <div class="top-container">
-          <div class="fastest-lap">
-            <div class="title-container">
-              <h1 class="font"><span class="fas fa-trophy"></span> Race Winner</h1>
-            </div>
-            <div class="driver-info-container">
-                <img src="{{ winner_drivers_image_dict.ImagePath }}" class="driver-image">
-                <div class="driver-details">
-                    <h3 class="fastest-lap-driver">{{ winner_driver_name }}</h3>
+            <div class="championship-position">
+              <div class="title-container">
+                <h1 class="font"><span class="fas fa-medal"></span> Championship Position</h1>
+              </div>
+              <div class="team-info-container">
+                <img src="{{ official_teams_image_dict.ImagePath }}" class="team-image">
+                  <div class="team-details">
+                    <h1>P{{ championship_position_dict.Position }}</h1>
+                  </div>
+              </div>
+            </div> 
+            <div class="lineup">
+              <div class="title-container">
+                <h1 class="font"><span class="fa-solid fa-user-group"></span> Driver Lineup</h1>
+              </div>
+              <div class="team-info-container">
+                <div class="driver-lineup">
+                  <div class="driver-container">
+                    <img src="{{ drivers1_image_dict.ImagePath }}" class="driver-lineup-image">
+                    <h1>{{ driver1_name }}</h1>
+                  </div>
+                  <div class="driver-container">
+                    <img src="{{ drivers2_image_dict.ImagePath }}" class="driver-lineup-image">
+                    <h1>{{ driver2_name }}</h1>
+                  </div>
                 </div>
+              </div>
             </div>
-          </div>        
-          <div class="fastest-lap">
-            <div class="title-container">
-              <h1 class="font"><span class="fas fa-fire"></span> DHL Fastest Lap Award</h1>
-            </div>
-            <div class="driver-info-container">
-                <img src="{{ fastest_drivers_image_dict.ImagePath }}" class="driver-image">
-                <div class="driver-details">
-                    <h3 class="fastest-lap-driver">{{ fastest_lap_data_dict.Driver }}</h3>
-                    <h3 class="fastest-lap-time">{{ fastest_lap_data_dict.FastestLap }}</h3>
-                </div>
-            </div>
-          </div>
         </div>
         <div class="standings-container">
           <div class="standings">
-            <h2 class="font">Driver Standings</h2>
+            <h2 class="font">Season Performance</h2>
             <table>
-              <thead>
-                  <tr>
-                      <th>POS</th>
-                      <th>NO</th>
-                      <th>DRIVER</th>
-                      <th>CAR</th>
-                      <th>LAPS</th>
-                      <th>TIME/RETIRED</th>
-                      <th>PTS</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {% for entry in race_details_data_dict %}
-                  <tr>
-                      <td>{{ entry['Position'] }}</td>
-                      <td>{{ entry['Number'] }}</td>
-                      <td>{{ entry['DriverName'] }}</td>
-                      <td>{{ entry['Car'] }}</td>
-                      <td>{{ entry['Laps'] }}</td>
-                      <td>{{ entry['Time'] }}</td>
-                      <td>{{ entry['Points'] }}</td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
-            </table>
+                <thead>
+                    <tr>
+                        <th>ROUND</th>
+                        <th>RACE</th>
+                        <th>PTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in team_form_dict %}
+                    <tr>
+                        <td>{{ entry['Round'] }}</td>
+                        <td>{{ entry['RaceName'] }}</td>
+                        <td>{{ entry['Points'] }}</td>
+                    </tr>
+                    {% endfor %}
+                 </tbody>
+             </table>
           </div>
         </div>
         <div class="footer">
@@ -173,7 +161,7 @@
   
         var timeleft = countDownDate - now;
   
-        // Time calculations for days, hours, minutes, and seconds
+        // time calculations for days, hours, minutes, and seconds
         var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
         var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));

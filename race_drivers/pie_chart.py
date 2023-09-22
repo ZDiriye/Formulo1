@@ -32,7 +32,7 @@ def create_pie_chart(driver_id):
         custom_data=["hover_text"],
         hover_name="PositionLabel",
         template="plotly",
-        width=341,
+        width=320,
         height=425,
     )
 

@@ -4,23 +4,14 @@
   text-decoration: none;
   font-family: 'Oswaldo';
   font-size: 1.5rem; 
-}
-
-.navbar-brand-container {
-  display: flex;
-  align-items: center;
-  margin-right: auto;
-}
-
-.navbar-brand-container a:hover {
-  color: white;
+  margin-left: auto;
 }
 
 header {
   display: flex;
-  align-items: center;
   padding: 1rem 5%; 
   background: #333333;
+  justify-content: space-between;
 }
 
 .nav-links {
@@ -28,10 +19,7 @@ header {
   padding: 0;
   margin: 0;
   display: flex;
-}
-
-.nav-links li {
-  margin-right: 2rem; 
+  margin-top: 0.2rem;
 }
 
 .nav-links a {
@@ -41,14 +29,7 @@ header {
   transition: color 0.2s ease 0s;
   padding: 0.25rem 0.25rem; 
   font-size: 0.8rem;
-}
-
-.nav-links a:hover {
-  color: #fff; 
-}
-
-.nav-links a.active {
-  color: #fff; 
+  margin-right: 2rem;
 }
 
 body {
@@ -199,7 +180,6 @@ body.active .page .content {
   border-radius: 1rem;
   background-color: #fff;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  width: 90%;
 }
 
 .standings table {
@@ -238,7 +218,7 @@ thead {
   font-family: 'Oswald';
 }
 
-.driver-details-container, .championship-position {
+.driver-details-container{
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -246,17 +226,37 @@ thead {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   padding: 2rem;
   margin: 2rem;
+  height: auto;
+}
+
+.championship-position{
+  flex: 1;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  padding: 2rem; 
+  margin: 2rem;
+  width: auto;
+  height: 23rem;
+}
+
+.driver-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 1rem;
 }
 
 .driver-details {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  max-width: 100%;
+
 }
 
-.driver-card, .standings{
+.driver-card{
   flex: 1;
   background-color: #fff;
   border-radius: 1rem;
@@ -280,7 +280,6 @@ thead {
   max-width: 100%;
   height: auto;
   border-radius: 1rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 .font{
@@ -301,20 +300,20 @@ a {
   color: #333;
 }
 
-.driver-info-container {
+.team-info-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 3rem;
   justify-content: center;
-  position: relative;
-  
+  overflow: hidden;
+  margin-top: 1rem;
 }
 
-.driver-info-container h1{
+.team-info-container h1{
   font-weight: bold;
-  font-size: 5rem;
-  color: #4169E1;
+  font-size: 3.5rem;
+  margin-top: 1.5rem;
+  color:  #1E90FF;
   font-family: 'Oswald';
 }
 
@@ -329,6 +328,10 @@ a {
   padding-bottom: 10px; 
 }
 
+.plotly-graph-container{
+  overflow: hidden;
+}
+
 .title-container h1 {
   margin-bottom: 0; 
 }
@@ -338,7 +341,7 @@ a {
 }
 
 .fa-medal{
-  color: #708090;
+  color: #C0C0C0;
 }
 
 a h1 {
@@ -413,6 +416,6 @@ a h1 {
 
   th, td {
     padding: 0.5rem; 
-    font-size: 0.7rem; 
+    font-size: 0.5rem; 
   }
 }

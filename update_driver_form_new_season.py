@@ -1,6 +1,9 @@
 import datetime
 from race_drivers.update_driver_form_table import update_the_form_of_drivers
 
+# update the DRIVER_FORM table for the new season
+
+
 def check_update_driver_form_new_season(driver_id):
     season_update_made = False
 

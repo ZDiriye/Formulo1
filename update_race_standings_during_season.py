@@ -4,7 +4,7 @@ from race_standings.update_constructor_standings_table import update_the_standin
 from race_standings.update_driver_standings_table import update_the_standings_of_drivers
 
 # checks if the CONSTRUCTORSTANDINGS, DRIVERSTANDINGS and RACE_SCHEDULE
-# needs updating table if so calls the relevant apis
+# needs updating table
 
 
 def check_update_standings_during_season():

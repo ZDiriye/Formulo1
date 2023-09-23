@@ -5,7 +5,7 @@ import sqlalchemy as db
 import datetime
 
 # checks if the RACE_DETAILS and FASTEST_LAP table needs updating
-# if so calls the relevant apis
+
 
 def check_update_race_details_during_season(race_name, round_num):
     engine = get_database_engine()

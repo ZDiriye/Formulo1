@@ -2,8 +2,7 @@ from race_drivers.update_driver_form_table import update_the_form_of_drivers
 from race_schedule.last_completed_race_date import get_last_completed_race_date
 from race_drivers.date_in_driver_form_table import get_date_in_driver_form_table
 
-# checks if the RACE_SCHEDULE and DRIVER_FORM table needs updating, 
-# if so calls the relevant apis
+# checks if the DRIVER_FORM table needs updating
 
 
 def check_update_driver_form_during_season(driver_id):

@@ -20,7 +20,7 @@ from race_drivers.driver_image_by_name import get_driver_image_by_name
 from race_teams.team_images_from_database import get_team_images_from_database
 from race_drivers.pie_chart import create_pie_chart
 from race_schedule.next_race_data_from_database import get_next_race_data_from_database
-from race_drivers.drivers_championship_position import get_drivers_championship_position
+from race_drivers.drivers_championship_data import get_drivers_championship_data
 from race_drivers.line_and_bar_graph import create_line_and_bar_graph
 from race_schedule.race_from_database import get_race_from_database
 from race_schedule.round_from_race_schedule import get_round_from_race_schedule
@@ -87,8 +87,10 @@ def races():
     race_schedule = get_race_schedule_from_database()
     circuit_images = get_circuit_images_from_database()
 
-    race_schedule_dict = race_schedule.to_dict(orient="records")
-    circuit_images_dict = circuit_images.to_dict(orient="records")
+    race_schedule_dict = race_schedule.to_dict(
+        orient="records")
+    circuit_images_dict = circuit_images.to_dict(
+        orient="records")
 
     return render_template(
         'races.html',
@@ -171,7 +173,7 @@ def drivers_form(driver_id):
     combined_graph_html = create_line_and_bar_graph(driver_id)
     fig_pie_html = create_pie_chart(driver_id)
 
-    championship_position_dict = get_drivers_championship_position(driver_id)
+    championship_data_dict = get_drivers_championship_data(driver_id)
     drivers_image_dict = get_driver_image_by_id(driver_id)
     next_race_dict = get_next_race_data_from_database()
 
@@ -183,7 +185,7 @@ def drivers_form(driver_id):
         driver_form_dict=driver_form_dict,
         fig_pie_html=fig_pie_html,
         combined_graph_html=combined_graph_html,
-        championship_position_dict=championship_position_dict,
+        championship_data_dict=championship_data_dict,
         drivers_image_dict=drivers_image_dict,
         next_race_dict=next_race_dict
         )
@@ -219,6 +221,7 @@ def teams_form(constructor_id):
     championship_position_dict = get_teams_championship_position(constructor_id)
     official_teams_image_dict = get_official_team_image_by_id(constructor_id)
     next_race_dict = get_next_race_data_from_database()
+    
     driver_lineup_dict = get_driver_lineup_from_database(constructor_id)
     driver1_name = driver_lineup_dict["DriverName1"]
     driver2_name = driver_lineup_dict["DriverName2"]

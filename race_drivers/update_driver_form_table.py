@@ -2,7 +2,7 @@ from database_engine.engine import get_database_engine
 from .driver_form_from_api import get_driver_form_from_api
 from .parse_driver_form import parse_driver_form_data
 
-# updates the race details in the sql table DRIVER_FORM
+# updates the drivers form in the sql table DRIVER_FORM
 
 
 def update_the_form_of_drivers(driver_id):

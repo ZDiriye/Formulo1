@@ -1,7 +1,7 @@
 from database_engine.engine import get_database_engine
 import pandas as pd
 
-# gets driver lineup from the database
+# gets driver lineup from the database given the constructor id
 
 def get_driver_lineup_from_database(constructor_id):
     engine = get_database_engine()

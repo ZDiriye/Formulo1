@@ -1,4 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .navbar-brand {
+  display: flex;
   font-weight: bold;
   color: #fff; 
   text-decoration: none;
@@ -23,19 +30,20 @@ header {
 }
 
 .nav-links a {
+  flex: 1;
   text-decoration: none;
   color: #b0b0b0;
   font-weight: 400;
   transition: color 0.2s ease 0s;
-  padding: 0.25rem 0.25rem; 
+  padding: 1rem; 
   font-size: 0.8rem;
-  margin-right: 2rem;
 }
 
 body {
   background: #f5f5f5;
   margin: 0;
   font-size: 16px;
+  height: 100%;
 }
 
 .page .sidebar {
@@ -46,12 +54,12 @@ body {
   position: fixed;
   background: linear-gradient(35deg, #202c3e, #b8500b);
   padding-top: 1.875rem;
-  transition: all 0.4s;
+  transition: transform 0.2s ease;
 }
 
 .page .content {
   margin-left: 15.625rem;
-  transition: all 0.4s;
+  transition: transform 0.2s ease;
 }
 
 body.active .page .sidebar {
@@ -75,6 +83,7 @@ body.active .page .content {
   padding: 0;
   margin-top: 2.5rem;
   padding-left: 1.125rem;
+  text-decoration: none;
 }
 
 .navigation-list p {
@@ -88,7 +97,6 @@ body.active .page .content {
   margin-right: 3.125rem;
   margin-bottom: 0.625rem;
   display: block;
-  text-decoration: none;
   position: relative;
 }
 
@@ -106,7 +114,7 @@ body.active .page .content {
   box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
 }
 
-.navigation-link {
+.navigation-link a {
   color: #b0b0b0;
   letter-spacing: 0.03125rem;
   font-family: 'Roboto', sans-serif;
@@ -117,6 +125,12 @@ body.active .page .content {
   transition: 0.2s;
 }
 
+.navigation-list-item .navigation-link{
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
 .navigation-list-item i {
   font-size: 1.125rem;
   color: #b0b0b0;
@@ -125,6 +139,7 @@ body.active .page .content {
 
 .navigation-list-item.active .navigation-link {
   color: #fff;
+  font-weight: 500;
 }
 
 .navigation-list-item.active i {
@@ -138,10 +153,6 @@ body.active .page .content {
 .navigation-list-item:hover i {
   color: #fff;
   transform: scale(1.05);
-}
-
-.navigation-list-item.active .navigation-link {
-  font-weight: 500;
 }
 
 .navigation-bar {
@@ -169,7 +180,7 @@ body.active .page .content {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40rem;
+  height: 50rem;
 }
 
 .race-card {
@@ -211,8 +222,8 @@ body.active .page .content {
 
 a.custom-link {
   text-decoration: none;
-  color: #333;
-}
+  color: white;
+} 
 
 a h1 {
   color: white;
@@ -240,7 +251,7 @@ a h1 {
   margin-left: 0.6rem;
 }
 
-@media (min-width: 577px) {
+@media (min-width: 1025px) {
   .navbar-brand,
   .navbar-brand-container,
   header,
@@ -249,7 +260,7 @@ a h1 {
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 1024px){
   .page .sidebar {
     display: none;
   }
@@ -265,5 +276,15 @@ a h1 {
 
   .race-card {
     width:90%;
+  }
+
+  .navigation.active {
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
+  }
+
+  .race-card-container {
+    height: 65rem;
   }
 }

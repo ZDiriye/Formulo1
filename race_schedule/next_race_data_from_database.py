@@ -2,7 +2,7 @@ from database_engine.engine import get_database_engine
 import pandas as pd
 import datetime
 
-# for the race countdown on the home page
+# for the race countdown for the next race
 
 
 def get_next_race_data_from_database():
@@ -18,5 +18,6 @@ def get_next_race_data_from_database():
             "Datetime": next_race_data["DisplayDate"][0] +
             " " +
             next_race_data["Time"][0],
+            "Time": next_race_data["Time"][0]
         }
     return next_race_info

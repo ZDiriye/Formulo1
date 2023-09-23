@@ -1,7 +1,7 @@
 from database_engine.engine import get_database_engine
 import pandas as pd
 
-# gets race schedule from the database
+# gets race images from the database
 
 
 def get_circuit_images_from_database():

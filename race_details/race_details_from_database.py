@@ -3,6 +3,7 @@ import pandas as pd
 
 # gets race details from the database given the race name
 
+
 def get_race_details_from_database(race_name):
     engine = get_database_engine()
     

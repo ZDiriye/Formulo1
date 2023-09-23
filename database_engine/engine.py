@@ -9,7 +9,6 @@ def get_database_engine():
     return db.create_engine(
         'sqlite:////Users/zakariyediriye/Formulo1/FORMULA1.db')
 
-
 class TestDatabaseEngine(unittest.TestCase):
     @patch('sqlalchemy.create_engine')
     def test_engine(self, mock_create_engine):

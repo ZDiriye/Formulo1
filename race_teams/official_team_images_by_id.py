@@ -1,7 +1,7 @@
 from database_engine.engine import get_database_engine
 import pandas as pd
 
-# gets the team image from the database given the ID
+# gets the official team image from the database given the constructor id
 
 
 def get_official_team_image_by_id(constructor_id):

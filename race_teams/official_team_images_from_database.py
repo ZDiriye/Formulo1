@@ -1,7 +1,7 @@
 from database_engine.engine import get_database_engine
 import pandas as pd
 
-# gets team images from the database
+# gets official team images from the database
 
 
 def get_official_team_images_from_database():

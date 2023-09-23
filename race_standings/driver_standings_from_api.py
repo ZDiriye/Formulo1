@@ -1,7 +1,6 @@
 import requests
 import unittest
 from unittest.mock import Mock, patch
-import pprint
 
 # gets the current driver standings data from the api and returns it in
 # dictionary form
@@ -16,7 +15,7 @@ def get_driver_standings_from_api():
         return standings_data
     except requests.exceptions.RequestException:
         return None  # return None when an API error occurs
-  
+
 class TestDriverStandingsFromApi(unittest.TestCase):
     @patch('race_standings.driver_standings_from_api.requests.get')
     def test_driver_standings_from_api(self, mock_get):

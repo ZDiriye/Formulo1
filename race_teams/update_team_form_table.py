@@ -2,7 +2,7 @@ from database_engine.engine import get_database_engine
 from .team_form_from_api import get_team_form_from_api
 from .parse_team_form import parse_team_form_data
 
-# updates the team's form in the sql table TEAM_FORM
+# updates the team form in the sql table TEAM_FORM
 
 
 def update_the_form_of_teams(constructor_id):

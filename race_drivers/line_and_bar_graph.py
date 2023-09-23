@@ -2,6 +2,9 @@ import pandas as pd
 import plotly.graph_objects as go
 from database_engine.engine import get_database_engine
 
+# creates line and bar graph given driver id
+
+
 def create_line_and_bar_graph(driver_id):
     engine = get_database_engine()
     

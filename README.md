@@ -2,14 +2,23 @@
 
 ## Project Overview
 
-Formulo 1 is a web application designed to provide users with real-time updates and information about Formula 1 racing. This application offers a user-friendly interface that allows users to access statistics related to Formula 1, including race standings, schedules, driver details, and more. By fetching data from various sources, including a database and external APIs, Formulo 1 keeps users informed about the latest racing events and statistical insights.
+Formulo 1 is a web application designed to provide users with real-time updates and information about Formula 1 racing. This application offers a user-friendly interface that allows users to access statistics related to Formula 1, including race standings, schedules, race details and current driver's and team's form. Formulo 1 keeps users informed about the latest racing events and statistical insights.
 
 ## Use Cases
-1. **View Standings and Schedules**: Users can effortlessly access up-to-date driver and constructor standings, as well as a countdown to next Formula 1 race of the current season.
+1. **View Current Standings and Countdown To Next Race**: Users can effortlessly access up-to-date driver and constructor standings, as well as a countdown to next Formula 1 race of the current season.
 
-2. **Race Details**: The application provides comprehensive information about both completed and upcoming races. This includes detailed race results and fastest lap statistics for each circuit.
+2. **View Races In The Current Season**: Users can look at different races and choose the one for which they want to see the statistics.
 
-3. **Driver Information**: Users can explore profiles of individual drivers, including their current form, accompanied by insightful visualisations.
+3. **Analyse Race details**: The application provides comprehensive information about both completed and upcoming races. This includes detailed standings, race winner and fastest lap statistics for each circuit.
+
+4. **View Drivers In The Current Season**: Users can look at individual drivers and choose which driver statistics they want to see.
+
+5. **Analyse a Driver's Form**: The application gives detailed information regarding the chosen driver's form. This shows each driver's current championship position, number of race wins, track record, and detailed information on their completed race performances.
+
+6. **View Teams In The Current Season**: Users can look at individual teams and choose which team statistics they want to see.
+
+7. **Analyse a Team's Form**: The application provides thorough information about the chosen team's form. This displays each team's current championship position, driver lineup, and information on the team's completed race performances.
+
 
 ## Non-functional Requirements
 
@@ -19,20 +28,26 @@ Formulo 1 is a web application designed to provide users with real-time updates 
 
 ## Functional Requirements
 
-- **Home Page**: Upon visiting the home page, users are greeted with a an overview of essential information, including current driver and constructor standings, details about the upcoming race.
+1. **View Current Standings and Countdown To Next Race**: This information is fetched and updated through functions like check_update_standings_during_season() and get_next_race_data_from_database().
 
-- **Race Schedule**: The race schedule section presents users with the complete calendar of Formula 1 races for the ongoing season. Users can easily identify the dates and locations of each race.
+2. **View Races In The Current Season**: The race schedule and circuit images are retrieved and displayed using functions such as get_race_schedule_from_database() and get_circuit_images_from_database().
 
-- **Race Details**: Formulo 1 provides in-depth insights into both completed and upcoming races. For completed races, users can explore detailed race results and race-specific statistics. For upcoming races, users can access information about the race name and scheduled date and time.
+3. **Analyse Race details**:  Race details are updated using functions like check_update_race_details_during_season() and fetched from the database through functions like get_race_details_from_database().
 
-- **Driver Profiles**: Users have the opportunity to delve into detailed profiles of individual drivers. These profiles showcase current form and interactive visualisations.
+4. **View Drivers In The Current Season**: Driver standings and images are fetched from the database using functions like get_driver_standings_from_database() and get_drivers_images_from_database().
+
+5. **Analyse a Driver's Form**: Driver form data is fetched and updated through functions like check_update_driver_form_new_season() and check_update_driver_form_during_season().
+
+6. **View Teams In The Current Season**: . Constructor standings and official team images are retrieved from the database using functions like get_constructor_standings_from_database() and get_official_team_images_from_database().
+
+7. **Analyse a Team's Form**:  Team form data is updated through functions like check_update_team_form_during_season() and fetched using get_team_form_from_database().
 
 ## Data Sources and APIs
 
 This project utilises the following data sources and APIs:
 
-- **Ergast API:** This Formula 1 API provides race schedules, driver standings, constructor standings, race details, and other relevant data.
-- **Database:** The project interacts with a Sqlite database to store and retrieve data efficiently. SQLAlchemy is used as the SQL toolkit and ORM.
+- **Ergast API:** This Formula 1 API provides the data needed to build Formulo1.
+- **Database:** The project interacts with a Sqlite database to store data from the api into structured tables and also uses SQL to query specific data from these tables.
 - **Images:** Images of drivers, teams, and races are sourced from external sources and integrated into the web application.
 
 

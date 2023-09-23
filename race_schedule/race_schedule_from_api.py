@@ -1,6 +1,7 @@
 import requests
 import unittest
 from unittest.mock import Mock, patch
+
 # gets the race schedule data from the api and returns it in dictionary form
 
 

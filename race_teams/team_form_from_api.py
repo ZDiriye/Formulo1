@@ -1,6 +1,6 @@
 import requests
 
-# gets the race details from api  given a round
+# gets the team form from api given a round
 
 
 def get_team_form_from_api(constructor_id):

@@ -1,4 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .navbar-brand {
+  display: flex;
   font-weight: bold;
   color: #fff; 
   text-decoration: none;
@@ -23,13 +30,13 @@ header {
 }
 
 .nav-links a {
+  flex: 1;
   text-decoration: none;
   color: #b0b0b0;
   font-weight: 400;
   transition: color 0.2s ease 0s;
-  padding: 0.25rem 0.25rem; 
+  padding: 1rem; 
   font-size: 0.8rem;
-  margin-right: 2rem;
 }
 
 body {
@@ -46,12 +53,12 @@ body {
   position: fixed;
   background: linear-gradient(35deg, #202c3e, #b8500b);
   padding-top: 1.875rem;
-  transition: all 0.4s;
+  transition: transform 0.2s ease;
 }
 
 .page .content {
   margin-left: 15.625rem;
-  transition: all 0.4s;
+  transition: transform 0.2s ease;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -77,6 +84,7 @@ body.active .page .content {
   padding: 0;
   margin-top: 2.5rem;
   padding-left: 1.125rem;
+  text-decoration: none;
 }
 
 .navigation-list p {
@@ -90,7 +98,6 @@ body.active .page .content {
   margin-right: 3.125rem;
   margin-bottom: 0.625rem;
   display: block;
-  text-decoration: none;
   position: relative;
 }
 
@@ -108,7 +115,7 @@ body.active .page .content {
   box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
 }
 
-.navigation-link {
+.navigation-link a {
   color: #b0b0b0;
   letter-spacing: 0.03125rem;
   font-family: 'Roboto', sans-serif;
@@ -119,6 +126,12 @@ body.active .page .content {
   transition: 0.2s;
 }
 
+.navigation-list-item .navigation-link{
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
 .navigation-list-item i {
   font-size: 1.125rem;
   color: #b0b0b0;
@@ -127,6 +140,7 @@ body.active .page .content {
 
 .navigation-list-item.active .navigation-link {
   color: #fff;
+  font-weight: 500;
 }
 
 .navigation-list-item.active i {
@@ -140,10 +154,6 @@ body.active .page .content {
 .navigation-list-item:hover i {
   color: #fff;
   transform: scale(1.05);
-}
-
-.navigation-list-item.active .navigation-link {
-  font-weight: 500;
 }
 
 .navigation-bar {
@@ -258,8 +268,8 @@ thead {
 
 .title-container {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 25px;
   position: relative;
   border-bottom: 3px solid darkred; 
@@ -291,6 +301,7 @@ thead {
   width: 12.5rem;
   max-width: 100%;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
   height: auto;
 }
 
@@ -325,7 +336,6 @@ a {
 
 .driver-container h1{
   font-family: 'Oswald';
-  font-weight: bold;
   color: #1E3952;
   font-size: 1.5rem;
   margin-top: 0.5rem;
@@ -335,8 +345,8 @@ a {
   font-weight: bold;
   font-size: 3.5rem;
   margin-top: 1.5rem;
-  color:  #1E90FF;
-  font-family: 'Oswald';
+  color: #E5A700;
+  font-family: 'Nanum Myeongjo', serif;
 }
 
 .title-container h1 {
@@ -393,12 +403,43 @@ a h1 {
   margin-left: 0.6rem;
 }
 
-@media (min-width: 577px) {
+@media (min-width: 1025px) {
   .navbar-brand,
   .navbar-brand-container,
   header,
   .nav-links {
     display: none;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 1024px) {
+  .page .sidebar {
+    display: none;
+  }
+
+  .page .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .navigation-bar-container {
+    display: none;
+  }
+
+  .standings-container {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  th, td {
+    padding: 0.5rem;
+    font-size: 0.9rem; 
+  }
+
+  .navigation.active {
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -424,5 +465,11 @@ a h1 {
   th, td {
     padding: 0.5rem; 
     font-size: 0.5rem; 
+  }
+
+  .navigation.active {
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
   }
 }

@@ -16,6 +16,7 @@ def parse_driver_standings_data(standings_data):
         nationality = driver_data['Driver']['nationality']
         constructor = driver_data['Constructors'][0]['name']
         points = driver_data['points']
+        wins = driver_data['wins']
         driverid = driver_data['Driver']['driverId']
         standings_list.append(
             (position,
@@ -23,6 +24,7 @@ def parse_driver_standings_data(standings_data):
              nationality,
              constructor,
              points,
+             wins,
              current_date,
              driverid))
 
@@ -34,6 +36,7 @@ def parse_driver_standings_data(standings_data):
             'Nationality',
             'Car',
             'Points',
+            'Wins',
             'Date',
             'DriverID'])
 

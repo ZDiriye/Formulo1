@@ -3,10 +3,12 @@ from dateutil.parser import parse
 import unittest
 from unittest.mock import patch
 import pytz
+
 # takes the relevant data from the dictionary and returns it in a data frame
 
+
 def get_correct_time(time_str, date_str):
-    # Define the target timezone (Europe/London)
+    # define the target timezone (Europe/London)
     target_timezone = pytz.timezone('Europe/London')
     date_obj = parse(date_str)
     

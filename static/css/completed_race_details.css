@@ -1,10 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .navbar-brand {
+  display: flex;
   font-weight: bold;
   color: #fff; 
   text-decoration: none;
   font-family: 'Oswaldo';
   font-size: 1.5rem; 
   margin-left: auto;
+  text-decoration: none;
 }
 
 header {
@@ -12,6 +20,7 @@ header {
   padding: 1rem 5%; 
   background: #333333;
   justify-content: space-between;
+  text-decoration: none;
 }
 
 .nav-links {
@@ -20,16 +29,17 @@ header {
   margin: 0;
   display: flex;
   margin-top: 0.2rem;
+  text-decoration: none;
 }
 
 .nav-links a {
+  flex: 1;
   text-decoration: none;
   color: #b0b0b0;
   font-weight: 400;
   transition: color 0.2s ease 0s;
-  padding: 0.25rem 0.25rem; 
+  padding: 1rem; 
   font-size: 0.8rem;
-  margin-right: 2rem;
 }
 
 body {
@@ -46,12 +56,12 @@ body {
   position: fixed;
   background: linear-gradient(35deg, #202c3e, #b8500b);
   padding-top: 1.875rem;
-  transition: all 0.4s;
+  transition: transform 0.2s ease;
 }
 
 .page .content {
+  transition: transform 0.2s ease;
   margin-left: 15.625rem;
-  transition: all 0.4s;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -77,6 +87,7 @@ body.active .page .content {
   padding: 0;
   margin-top: 2.5rem;
   padding-left: 1.125rem;
+  text-decoration: none;
 }
 
 .navigation-list p {
@@ -90,7 +101,6 @@ body.active .page .content {
   margin-right: 3.125rem;
   margin-bottom: 0.625rem;
   display: block;
-  text-decoration: none;
   position: relative;
 }
 
@@ -108,7 +118,7 @@ body.active .page .content {
   box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
 }
 
-.navigation-link {
+.navigation-link a {
   color: #b0b0b0;
   letter-spacing: 0.03125rem;
   font-family: 'Roboto', sans-serif;
@@ -119,6 +129,12 @@ body.active .page .content {
   transition: 0.2s;
 }
 
+.navigation-list-item .navigation-link{
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
 .navigation-list-item i {
   font-size: 1.125rem;
   color: #b0b0b0;
@@ -127,6 +143,7 @@ body.active .page .content {
 
 .navigation-list-item.active .navigation-link {
   color: #fff;
+  font-weight: 500;
 }
 
 .navigation-list-item.active i {
@@ -140,10 +157,6 @@ body.active .page .content {
 .navigation-list-item:hover i {
   color: #fff;
   transform: scale(1.05);
-}
-
-.navigation-list-item.active .navigation-link {
-  font-weight: 500;
 }
 
 .navigation-bar {
@@ -259,7 +272,7 @@ a.custom-link {
   margin-left: 0.5rem;
 }
 
-.fastest-lap{
+.fastest-lap, .race-winner{
   display: 1;
   background-color: #fff;
   border-radius: 1rem;
@@ -279,8 +292,8 @@ a.custom-link {
 
 .title-container {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   margin-bottom: 25px;
   position: relative;
@@ -319,7 +332,7 @@ a.custom-link {
   color:darkred;
 }
 
-.fastest-lap-driver {
+.fastest-lap-driver, .race-winner-driver {
   color: #333; 
   font-weight: bold;
   max-width: 100%;
@@ -380,12 +393,43 @@ a h1{
   color: gold;
 }
 
-@media (min-width: 577px) {
+@media (min-width: 1025px) {
   .navbar-brand,
   .navbar-brand-container,
   header,
   .nav-links {
     display: none;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 1024px) {
+  .page .sidebar {
+    display: none;
+  }
+
+  .page .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .navigation-bar-container {
+    display: none;
+  }
+
+  .standings-container {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  th, td {
+    padding: 0.5rem;
+    font-size: 0.9rem; 
+  }
+
+  .navigation.active {
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -411,5 +455,11 @@ a h1{
   th, td {
     padding: 0.5rem; 
     font-size: 0.5rem; 
+  }
+
+  .navigation.active {
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 0.025em rgba(0, 0, 0, 0.2);
   }
 }

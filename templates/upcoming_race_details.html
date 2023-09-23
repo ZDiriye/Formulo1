@@ -7,6 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preload" href="../static/css/upcoming_race_details.css" as="style">
     <link rel="stylesheet" href="../static/css/upcoming_race_details.css">
   </head>
   <body>
@@ -15,17 +16,17 @@
           <a href="/" class="navbar-brand">Formulo 1</a>
       </div>
       <nav>
-        <ul class="nav-links">
-            <li>
-                <a class="navigation-list-item nav-races" href="/races">Races</a>
-            </li>
-            <li>
-                <a class="navigation-list-item nav-drivers" href="/drivers">Drivers</a>
-            </li>
-            <li>
-                <a class="navigation-list-item nav-teams" href="/teams">Teams</a>
-            </li>
-        </ul>
+          <ul class="nav-links">
+              <li>
+                  <a class="navigation nav-races"  href="/races">Races</a>
+              </li>
+              <li>
+                  <a class="navigation nav-drivers" href="/drivers">Drivers</a>
+              </li>
+              <li>
+                  <a class="navigation nav-teams" href="/teams">Teams</a>
+              </li>
+          </ul>
       </nav>
     </header>
     <div class="page">
@@ -90,7 +91,7 @@
             <h1>{{ race_data_dict.RaceName }} is on:</h1>
             <div class="icon-date">
               <i class="fa-regular fa-calendar-days"></i>
-              <h4>{{ race_data_dict.Datetime }} PM</h4>
+              <h4>{{ race_data_dict.Datetime }}</h4>
             </div>
             <h5 id="countdown"></h5>
           </div>
@@ -102,7 +103,6 @@
     </div>
     <script>
       var datetimeString = "{{ race_data_dict.Datetime }}";
-  
       var countDownDate = new Date(datetimeString).getTime();
   
       var x = setInterval(function() {
@@ -115,7 +115,7 @@
         var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-  
+
         document.getElementById("countdown").innerHTML = days + " Day(s) " + hours + " Hour(s) " + minutes + " Minute(s) " + seconds + " Second(s) ";
         if (timeleft < 0) {
           clearInterval(x);
@@ -123,29 +123,8 @@
         }
       }, 1000);
     </script>
-    <script>
-      const currentPagePath = window.location.pathname;
-    
-      const racesNavItems = document.querySelectorAll(".nav-races");
-      const driversNavItems = document.querySelectorAll(".nav-drivers");
-      const teamsNavItems = document.querySelectorAll(".nav-teams");
-    
-      // check if the current page matches each navigation item and add the "active" class
-      if (currentPagePath.startsWith("/races")) {
-        racesNavItems.forEach((item) => {
-          item.classList.add("active");
-        });
-      } else if (currentPagePath.startsWith("/drivers")) {
-        driversNavItems.forEach((item) => {
-          item.classList.add("active");
-        });
-      } else if (currentPagePath.startsWith("/teams")) {
-        teamsNavItems.forEach((item) => {
-          item.classList.add("active");
-        });
-      }
-    </script>    
     <script src="../static/js/sidebar.js"></script>
+    <script src="../static/js/active.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>

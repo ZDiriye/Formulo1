@@ -1,7 +1,7 @@
 from database_engine.engine import get_database_engine
 import sqlalchemy as db
 
-# to get the round from the race schedule table given the race name
+# get the round from the race schedule table given the race name
 
 
 def get_round_from_race_schedule(race_name):

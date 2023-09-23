@@ -1,5 +1,6 @@
 import requests
-# gets the race details from api  given a round
+
+# gets the driver lineup from api  given the constructor id
 
 
 def get_driver_lineup_from_api(constructor_id):

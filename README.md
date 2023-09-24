@@ -5,7 +5,7 @@
 Formulo 1 is a web application designed to provide users with real-time updates and information about Formula 1 racing. This application offers a user-friendly interface that allows users to access statistics related to Formula 1, including race standings, schedules, race details and current driver's and team's form. Formulo 1 keeps users informed about the latest racing events and statistical insights.
 
 ## Use Cases
-1. **View Current Standings and Countdown To Next Race**: Users can effortlessly access up-to-date driver and constructor standings, as well as a countdown to next Formula 1 race of the current season.
+1. **View Current Standings and Countdown To Next Race**: Users can effortlessly access up-to-date driver and constructor standings, as well as a countdown to the next Formula 1 race of the current season.
 
 2. **View Races In The Current Season**: Users can look at different races and choose the one for which they want to see the statistics.
 
@@ -47,7 +47,7 @@ Formulo 1 is a web application designed to provide users with real-time updates 
 This project utilises the following data sources and APIs:
 
 - **Ergast API:** This Formula 1 API provides the data needed to build Formulo1.
-- **Database:** The project interacts with a Sqlite database to store data from the api into structured tables and also uses SQL to query specific data from these tables.
+- **Database:** Optimised SQLite database management and query performance using SQLAlchemy, resulting in more efficient data handling.
 - **Images:** Images of drivers, teams, and races are sourced from external sources and integrated into the web application.
 
 

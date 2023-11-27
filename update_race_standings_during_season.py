@@ -12,10 +12,12 @@ def check_update_standings_during_season():
     max_date_in_standings = get_date_in_driver_standings()
 
     if max_date_in_standings is None or max_date_in_standings < last_completed_race:
+        print(1)
         update_the_standings_of_drivers()
         update_the_standings_of_constructors()
     elif max_date_in_standings is not None and max_date_in_standings > last_completed_race:
+        print(2)
         return
     else:
+        print(3)
         return
-

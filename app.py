@@ -1,8 +1,6 @@
 import git
 from flask import Flask, render_template, request
 from update_race_standings_during_season import check_update_standings_during_season
-from update_race_standings_schedule_new_season import check_update_schedule_standings_for_new_season
-from update_driver_form_new_season import check_update_driver_form_new_season
 from update_race_details_during_season import check_update_race_details_during_season
 from race_details.winner_name_from_database import get_winner_name_from_database
 from race_standings.driver_standings_from_database import get_driver_standings_from_database
@@ -27,7 +25,6 @@ from race_schedule.round_from_race_schedule import get_round_from_race_schedule
 from race_schedule.check_is_race_completed import is_race_completed
 from race_teams.official_team_images_from_database import get_official_team_images_from_database
 from update_team_form_during_season import check_update_team_form_during_season
-from update_driver_form_new_season import check_update_driver_form_new_season
 from race_teams.team_form_from_database import get_team_form_from_database
 from race_teams.official_team_images_by_id import get_official_team_image_by_id
 from race_teams.teams_championship_position import get_teams_championship_position
@@ -49,7 +46,6 @@ def webhook():
 @app.route("/")
 def home():
 
-    check_update_schedule_standings_for_new_season()
     check_update_standings_during_season()
 
     drivers_standings = get_driver_standings_from_database()
@@ -81,7 +77,6 @@ def home():
 @app.route("/races")
 def races():
 
-    check_update_schedule_standings_for_new_season()
     check_update_standings_during_season()
 
     race_schedule = get_race_schedule_from_database()
@@ -146,7 +141,6 @@ def race_details(race_name):
 @app.route("/drivers")
 def drivers():
         
-    check_update_schedule_standings_for_new_season()
     check_update_standings_during_season()
 
     drivers_standings = get_driver_standings_from_database()
@@ -165,8 +159,7 @@ def drivers():
 
 @app.route('/drivers/<driver_id>')
 def drivers_form(driver_id):
-        
-    check_update_driver_form_new_season(driver_id)
+
     check_update_driver_form_during_season(driver_id)
 
     driver_form = get_driver_form_from_database(driver_id)
@@ -192,8 +185,7 @@ def drivers_form(driver_id):
 
 @app.route("/teams")
 def teams():
-        
-    check_update_schedule_standings_for_new_season()
+
     check_update_standings_during_season()
 
     constructor_standings = get_constructor_standings_from_database()
@@ -213,7 +205,6 @@ def teams():
 @app.route('/teams/<constructor_id>')
 def teams_form(constructor_id):
 
-    check_update_driver_form_new_season(constructor_id)
     check_update_team_form_during_season(constructor_id)
 
     team_form = get_team_form_from_database(constructor_id)

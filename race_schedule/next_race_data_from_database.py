@@ -13,11 +13,14 @@ def get_next_race_data_from_database():
         query = f"SELECT * FROM RACE_SCHEDULE WHERE Date >= '{current_date}' ORDER BY Date LIMIT 1"
         next_race_data = pd.read_sql(query, connection)
 
-    next_race_info = {
-            "RaceName": next_race_data["RaceName"][0],
-            "Datetime": next_race_data["DisplayDate"][0] +
-            " " +
-            next_race_data["Time"][0],
-            "Time": next_race_data["Time"][0]
-        }
+    if not next_race_data.empty:
+        next_race_info = {
+                "RaceName": next_race_data["RaceName"][0],
+                "Datetime": next_race_data["DisplayDate"][0] +
+                " " +
+                next_race_data["Time"][0],
+                "Time": next_race_data["Time"][0]
+            }
+    else:
+        return None
     return next_race_info

@@ -68,8 +68,7 @@ class TestParseDriverStandings(unittest.TestCase):
 
         current_date = datetime.date.today().strftime('%Y-%m-%d')
         expected_data = [
-            ('1', 'Max Verstappen', 'Dutch', 'Red Bull',
-             '314', current_date, 'max_verstappen')
+            ('1', 'Max Verstappen', 'Dutch', 'Red Bull', '314', '10', current_date, 'max_verstappen')
         ]
 
         expected_df = pd.DataFrame(
@@ -80,8 +79,11 @@ class TestParseDriverStandings(unittest.TestCase):
                 'Nationality',
                 'Car',
                 'Points',
+                'Wins',
                 'Date',
-                'DriverID'])
+                'DriverID'
+            ]
+            )
 
         # assert the function's return value matches the expected data
         pd.testing.assert_frame_equal(result, expected_df)
